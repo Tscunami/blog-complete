@@ -106,9 +106,11 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
 
 
+db.create_all()
+
 # Create file with our DB and tables
-if not os.path.isfile("blog.db"):
-    db.create_all()
+# if not os.path.isfile("blog.db"):
+#     db.create_all()
 
 
 # Configure Flask app to use Flask_Login
