@@ -250,7 +250,7 @@ def contact():
         text = f" Name: {username}\n Email: {email}\n Phone: {phone}\n Message: {message}"
         message = f"{subject}{text}"
 
-        with smtplib.SMTP_SSL("smtp.mail.yahoo.com", port=465) as connection:
+        with smtplib.SMTP("smtp.mail.yahoo.com", port=465) as connection:
             connection.starttls()
             connection.login(user=os.getenv("FROM_EMAIL"), password=os.getenv("PASSWORD"))
             connection.sendmail(
