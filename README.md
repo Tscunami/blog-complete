@@ -1,10 +1,12 @@
 # Complete Blog
 
+URL:
+* https://lukas-awesome-blog.herokuapp.com/
+
 Template:
 * https://startbootstrap.com/theme/clean-blog
 
-Functions
-* Contact form sends email with the given message (in order to work, you have to create data.py file with variables FROM_EMAIL, PASSWORD, TO_EMAIL)
+Functions:
 * All passwords are salted and hashed through pbkdf2:sha256 method
 * Flask_login is handling login status, so in specific situations, users can see different things than others
 * All data are stored with SQLAlchemy in SQLite DB
@@ -27,4 +29,7 @@ Libraries:
 * flask_sqlalchemy
 * flask_login
 * smtplib
+
+Issuses:
+* Contact form currently not working, gmail doesn't allow heroku send email even less secure apps are allowed
 
