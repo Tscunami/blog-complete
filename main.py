@@ -250,7 +250,7 @@ def contact():
         text = f" Name: {username}\n Email: {email}\n Phone: {phone}\n Message: {message}"
         message = f"{subject}{text}"
 
-        with smtplib.SMTP("smtp.mail.yahoo.com", port=465) as connection:
+        with smtplib.SMTP("smtp.mail.yahoo.com", port=587) as connection:
             connection.starttls()
             connection.login(user=os.getenv("FROM_EMAIL"), password=os.getenv("PASSWORD"))
             connection.sendmail(
@@ -322,4 +322,5 @@ def delete_comment(post_id, comment_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
