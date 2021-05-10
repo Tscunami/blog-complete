@@ -237,29 +237,29 @@ def about():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    # if request.method == 'POST':
-    #     form_data = request.form
-    #     username = form_data['username']
-    #     email = form_data['email']
-    #     phone = form_data['phone']
-    #     message = form_data['message']
-    #
-    #     # Send Email
-    #     subject = f"Subject:New Blog Message from {username}\n\n"
-    #     recipient = os.getenv("TO_EMAIL")
-    #     text = f" Name: {username}\n Email: {email}\n Phone: {phone}\n Message: {message}"
-    #     message = f"{subject}{text}"
-    #
-    #     with smtplib.SMTP("smtp.mail.yahoo.com", port=587) as connection:
-    #         connection.starttls()
-    #         connection.login(user=os.getenv("FROM_EMAIL"), password=os.getenv("PASSWORD"))
-    #         connection.sendmail(
-    #             from_addr=os.getenv("FROM_EMAIL"),
-    #             to_addrs=recipient,
-    #             msg=message
-    #         )
+    if request.method == 'POST':
+        form_data = request.form
+        username = form_data['username']
+        email = form_data['email']
+        phone = form_data['phone']
+        message = form_data['message']
 
-        # return render_template("contact.html", message="Successfully sent your message")
+        # Send Email
+        subject = f"Subject:New Blog Message from {username}\n\n"
+        recipient = os.getenv("TO_EMAIL")
+        text = f" Name: {username}\n Email: {email}\n Phone: {phone}\n Message: {message}"
+        message = f"{subject}{text}"
+
+        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+            connection.starttls()
+            connection.login(user=os.getenv("FROM_EMAIL"), password=os.getenv("PASSWORD"))
+            connection.sendmail(
+                from_addr=os.getenv("FROM_EMAIL"),
+                to_addrs=recipient,
+                msg=message
+            )
+
+        return render_template("contact.html", message="Successfully sent your message")
     return render_template("contact.html")
 
 
