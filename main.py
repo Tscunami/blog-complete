@@ -248,7 +248,7 @@ def contact():
         text = f" Name: {username}\n Email: {email}\n Phone: {phone}\n Message: {message}"
         message = f"{subject}{text}"
 
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
             connection.starttls()
             connection.login(user=os.getenv("FROM_EMAIL"), password=os.getenv("PASSWORD"))
             connection.sendmail(
